@@ -1,0 +1,26 @@
+name: Environment Variable Example
+
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  example-job:
+    runs-on: ubuntu-latest
+
+    env:
+      MY_VARIABLE: "Hello, GitHub Actions!"
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Display Environment Variable
+        run: echo $MY_VARIABLE
+
+      - name: Use Environment Variable in Another Step
+        run: |
+          echo "Using environment variable in another step:"
+          echo $MY_VARIABLE
